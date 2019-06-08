@@ -27,9 +27,8 @@ public class LoginComponent {
 
     Stage stage2 = new Stage();
 
-public List<Node> getLoginElements() {
+public List<Node> getLoginElements(Stage stage) {
     List<Node> elements = new ArrayList<>();
-
     Text loginHeader = new Text("DRAGON BANK UNITED");
     loginHeader.setFont(Font.font("Verdana",30));
     loginHeader.setTextAlignment(TextAlignment.RIGHT);
@@ -41,14 +40,7 @@ public List<Node> getLoginElements() {
 
     Button btnLogin = new Button("LOGIN");
 
-    // Login Logic * erick Code * //
-    btnLogin.setOnAction(e -> {
-        int id = Integer.parseInt(accountIdTextField.getText());
-        cashMachine.login(id);
-        System.out.println(cashMachine.toString());
 
-
-    });
 
 
    /*elements.add(loginHeader);
@@ -73,6 +65,25 @@ public List<Node> getLoginElements() {
 
     elements.add(textFlowPane);
     elements.add(gridPane);
+
+    // Login Logic * erick Code * //
+    btnLogin.setOnAction(e -> {
+        int id = Integer.parseInt(accountIdTextField.getText());
+        cashMachine.login(id);
+        System.out.println(cashMachine.toString());
+
+
+        LoggedInComponent a = new LoggedInComponent();
+
+        Node [] nodes = a.getLoginElements().toArray(new Node[]{});
+        VBox vbox = new VBox(10);
+        vbox.setPrefSize(600, 600);
+        vbox.getChildren().addAll(nodes);
+        stage.setScene(new Scene(vbox));
+        stage.show();
+
+
+    });
 
     return elements;
 

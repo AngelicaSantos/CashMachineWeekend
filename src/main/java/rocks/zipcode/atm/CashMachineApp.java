@@ -37,12 +37,12 @@ public class CashMachineApp extends Application {
     Scene scene1, scene2;
 
     /* this is Kayva login screen */
-    private Parent createLogin() {
+    private Parent createLogin(Stage stage) {
         VBox vbox = new VBox(10);
         vbox.setPrefSize(600, 600);
         //vbox.getChildren().addAll(field, flowpane, areaInfo);
         LoginComponent loginComponent = new LoginComponent();
-        List<Node> list = loginComponent.getLoginElements();
+        List<Node> list = loginComponent.getLoginElements(stage);
         Node[] nodes = list.toArray(new Node[]{});
         vbox.getChildren().addAll(nodes);
         return vbox;
@@ -50,7 +50,11 @@ public class CashMachineApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-//        stage.setScene(new Scene(createLogin()));
+        // Erick code ?
+        LoginComponent loginScreen = new LoginComponent();
+        loginScreen.getLoginElements(stage);
+
+        //stage.setScene(new Scene(createLogin(Stage stage)));
 
 
      //Account field
@@ -81,7 +85,7 @@ public class CashMachineApp extends Application {
 
         //Button Login
         Button btLogin = new Button("Logout");
-        btLogin.setOnAction(e -> stage.setScene(new Scene(createLogin())));
+        btLogin.setOnAction(e -> stage.setScene(new Scene(createLogin(stage))));
 
 
     //Grid layout
