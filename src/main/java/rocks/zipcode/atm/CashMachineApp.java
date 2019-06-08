@@ -84,9 +84,9 @@ public class CashMachineApp extends Application {
         //Button Withdraw
         Button btWithdraw = new Button("Withdraw");
 
+
         //Button Login
         Button btLogin = new Button("Logout");
-        btLogin.setOnAction(e -> stage.setScene(new Scene(createLogin(stage, scene1))));
 
 
     //Grid layout
@@ -113,8 +113,14 @@ public class CashMachineApp extends Application {
         accountPage.setVgap(10);
         accountPage.setHgap(10);
 
+
+
+
         scene2 = new Scene(accountPage, 480, 350);
         scene1 =  new Scene(createLogin(stage, scene2));
+
+        //logout button action
+        btLogin.setOnAction(e -> stage.setScene(scene1));
         stage.setTitle("Dragon Bank United");
         stage.setResizable(false);
         stage.setScene(scene1);
