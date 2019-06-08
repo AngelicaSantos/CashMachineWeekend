@@ -46,7 +46,7 @@ public List<Node> getLoginElements() {
         cashMachine.login(id);
 
         System.out.println(cashMachine.toString());
-        window.setScene(accountPage);
+  //      window.setScene(accountPage);
 
     });
 

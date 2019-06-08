@@ -59,7 +59,7 @@ public class CashMachineApp extends Application {
         accountPage = new Scene(layout2, 600, 300);
 
         window.setScene(new Scene(createLogin()));
-        window.setScene(new Scene(getLoginElements()));
+  //      window.setScene(new Scene(getLoginElements()));
 
  //      window.setScene(login);
  //       window.setScene(accountPage);
@@ -78,7 +78,7 @@ public class CashMachineApp extends Application {
  //vbox.getChildren().addAll(field, flowpane, areaInfo);
  LoginComponent loginComponent = new LoginComponent();
  List<Node> list = loginComponent.getLoginElements();
- Node[] nodes = list.toArray(new Node[]{});getLoginElements;
+ Node[] nodes = list.toArray(new Node[]{});
  vbox.getChildren().addAll(nodes);
  return vbox;
  }
