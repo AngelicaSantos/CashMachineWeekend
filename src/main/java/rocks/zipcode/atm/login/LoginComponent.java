@@ -27,11 +27,8 @@ public class LoginComponent {
 
     Stage stage2 = new Stage();
 
-
 public List<Node> getLoginElements() {
     List<Node> elements = new ArrayList<>();
-
-
 
     Text loginHeader = new Text("DRAGON BANK UNITED");
     loginHeader.setFont(Font.font("Verdana",30));
@@ -58,7 +55,6 @@ public List<Node> getLoginElements() {
    elements.add(accountIdLabel);
    elements.add(accountIdTextField);
    elements.add(btnLogin);*/
-
     TextFlow textFlowPane = new TextFlow();
     textFlowPane.setTextAlignment(TextAlignment.CENTER);
     textFlowPane.setPrefSize(400, 20);
@@ -77,7 +73,8 @@ public List<Node> getLoginElements() {
 
     elements.add(textFlowPane);
     elements.add(gridPane);
+
     return elements;
 
-}
+    }
 }

@@ -53,8 +53,6 @@ public class CashMachineApp extends Application {
 //        stage.setScene(new Scene(createLogin()));
 
 
-
-
      //Account field
         Label labelId = new Label("Account ID");
         TextField id = new TextField("getId");
