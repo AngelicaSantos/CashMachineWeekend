@@ -67,7 +67,9 @@ public class CashMachineApp extends Application {
         flowpane.getChildren().add(btnDeposit);
         flowpane.getChildren().add(btnWithdraw);
         flowpane.getChildren().add(btnExit);
+
         //vbox.getChildren().addAll(field, flowpane, areaInfo);
+
         LoginComponent loginComponent = new LoginComponent();
         List<Node> list = loginComponent.getLoginElements();
         Node[] nodes = list.toArray(new Node[]{});

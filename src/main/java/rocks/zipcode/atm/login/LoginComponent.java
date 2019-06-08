@@ -13,11 +13,15 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
+import rocks.zipcode.atm.CashMachine;
+import rocks.zipcode.atm.bank.Bank;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoginComponent {
+    private CashMachine cashMachine = new CashMachine(new Bank());
+
 public List<Node> getLoginElements() {
     List<Node> elements = new ArrayList<>();
 
@@ -31,6 +35,15 @@ public List<Node> getLoginElements() {
     TextField accountIdTextField = new TextField();
 
     Button btnLogin = new Button("LOGIN");
+    // Login Logic * erick Code * //
+    btnLogin.setOnAction(e -> {
+        int id = Integer.parseInt(accountIdTextField.getText());
+        cashMachine.login(id);
+
+        // areaInfo.setText(cashMachine.toString()); //only code that needs updating
+    });
+
+
    /*elements.add(loginHeader);
    elements.add(accountIdLabel);
    elements.add(accountIdTextField);
