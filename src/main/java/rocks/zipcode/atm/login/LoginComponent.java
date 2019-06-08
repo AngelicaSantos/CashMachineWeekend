@@ -25,9 +25,13 @@ import java.util.List;
 public class LoginComponent {
     private CashMachine cashMachine = new CashMachine(new Bank());
 
+    Stage stage2 = new Stage();
+
+
 public List<Node> getLoginElements() {
     List<Node> elements = new ArrayList<>();
-    Stage window = new Stage();
+
+
 
     Text loginHeader = new Text("DRAGON BANK UNITED");
     loginHeader.setFont(Font.font("Verdana",30));
@@ -44,9 +48,8 @@ public List<Node> getLoginElements() {
     btnLogin.setOnAction(e -> {
         int id = Integer.parseInt(accountIdTextField.getText());
         cashMachine.login(id);
-
         System.out.println(cashMachine.toString());
-  //      window.setScene(accountPage);
+
 
     });
 
