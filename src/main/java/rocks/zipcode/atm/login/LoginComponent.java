@@ -4,10 +4,12 @@ package rocks.zipcode.atm.login;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -35,12 +37,13 @@ public List<Node> getLoginElements() {
     TextField accountIdTextField = new TextField();
 
     Button btnLogin = new Button("LOGIN");
+
     // Login Logic * erick Code * //
     btnLogin.setOnAction(e -> {
         int id = Integer.parseInt(accountIdTextField.getText());
         cashMachine.login(id);
 
-        // areaInfo.setText(cashMachine.toString()); //only code that needs updating
+        System.out.println(cashMachine.toString());
     });
 
 
