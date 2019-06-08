@@ -27,7 +27,7 @@ public class LoginComponent {
 
     Stage stage2 = new Stage();
 
-public List<Node> getLoginElements(Stage stage) {
+public List<Node> getLoginElements(Stage stage, Scene scene1) {
     List<Node> elements = new ArrayList<>();
     Text loginHeader = new Text("DRAGON BANK UNITED");
     loginHeader.setFont(Font.font("Verdana",30));
@@ -72,14 +72,7 @@ public List<Node> getLoginElements(Stage stage) {
         cashMachine.login(id);
         System.out.println(cashMachine.toString());
 
-
-        LoggedInComponent a = new LoggedInComponent();
-
-        Node [] nodes = a.getLoginElements().toArray(new Node[]{});
-        VBox vbox = new VBox(10);
-        vbox.setPrefSize(600, 600);
-        vbox.getChildren().addAll(nodes);
-        stage.setScene(new Scene(vbox));
+        stage.setScene(scene1);
         stage.show();
 
 
