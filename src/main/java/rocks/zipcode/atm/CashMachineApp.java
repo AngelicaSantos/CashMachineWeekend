@@ -1,13 +1,12 @@
 package rocks.zipcode.atm;
 
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 //package rocks.zipcode.atm;
 
@@ -52,18 +51,70 @@ public class CashMachineApp extends Application {
     public void start(Stage stage) throws Exception {
 //        stage.setScene(new Scene(createLogin()));
 
+
+
+
+     //Account field
+        Label labelId = new Label("Account ID");
+        TextField id = new TextField("getId");
+
+     //Name field
+        Label labelName = new Label("Name");
+        TextField name = new TextField("getName");
+
+        //Email field
+        Label labelEmail = new Label("Email");
+        TextField email = new TextField("getEmail");
+
+        //Balance field
+        Label labelBalance = new Label("Acccout Balance");
+        TextField balance = new TextField("getBalance");
+
+        //Transaction field
+        Label labelTransaction = new Label("Transaction Amount");
+        TextField transaction = new TextField("getTransaction");
+
+        //Button Deposit
+        Button btDeposit = new Button("Deposit");
+
+        //Button Withdraw
+        Button btWithdraw = new Button("Withdraw");
+
         //Button Login
-        Button btLogin = new Button("Go back to Login");
+        Button btLogin = new Button("Logout");
         btLogin.setOnAction(e -> stage.setScene(new Scene(createLogin())));
 
-        //Layout accountPage
-        StackPane accountPage = new StackPane();
-        accountPage.getChildren().addAll(btLogin);
+
+    //Grid layout
+        GridPane.setConstraints(labelId, 0 , 0);
+        GridPane.setConstraints(id, 1, 0);
+        GridPane.setConstraints(labelName, 0 , 1);
+        GridPane.setConstraints(name, 1, 1);
+        GridPane.setConstraints(labelEmail, 0 , 2);
+        GridPane.setConstraints(email, 1, 2);
+        GridPane.setConstraints(labelBalance, 0 , 3);
+        GridPane.setConstraints(balance, 1, 3);
+        GridPane.setConstraints(labelTransaction, 0 , 5);
+        GridPane.setConstraints(transaction, 1, 5);
+        GridPane.setConstraints(btDeposit, 3, 4);
+        GridPane.setConstraints(btWithdraw, 3, 5);
+        GridPane.setConstraints(btLogin, 3, 8);
+
+     //Layout accountPage
+        GridPane accountPage = new GridPane();
+        accountPage.setPadding(new Insets(10, 10, 10, 10));
+        accountPage.getChildren().addAll(btLogin, labelId, id, name, labelName, labelEmail, email,
+                labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw);
+        accountPage.setVgap(10);
+        accountPage.setHgap(10);
+
         scene2 = new Scene(accountPage, 900, 900);
+
 
 
         stage.setScene(scene2);
         stage.show();
+
 
     }
 
