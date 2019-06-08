@@ -3,6 +3,7 @@ package rocks.zipcode.atm;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -102,16 +103,17 @@ public class CashMachineApp extends Application {
 
      //Layout accountPage
         GridPane accountPage = new GridPane();
+        accountPage.setBackground(new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
         accountPage.setPadding(new Insets(10, 10, 10, 10));
         accountPage.getChildren().addAll(btLogin, labelId, id, name, labelName, labelEmail, email,
                 labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw);
         accountPage.setVgap(10);
         accountPage.setHgap(10);
 
-        scene2 = new Scene(accountPage, 900, 900);
+        scene2 = new Scene(accountPage, 480, 350);
 
-
-
+        stage.setTitle("Dragon Bank United");
+        stage.setResizable(false);
         stage.setScene(scene2);
         stage.show();
 
