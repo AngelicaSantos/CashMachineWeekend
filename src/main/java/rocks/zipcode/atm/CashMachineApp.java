@@ -21,7 +21,7 @@ public class CashMachineApp extends Application {
 
     private Parent createContent() {
         VBox vbox = new VBox(10);
-        vbox.setPrefSize(600, 600);
+        vbox.setPrefSize(900, 600);
 
         TextArea areaInfo = new TextArea();
 
