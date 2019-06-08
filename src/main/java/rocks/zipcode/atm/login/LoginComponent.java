@@ -15,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 import rocks.zipcode.atm.CashMachine;
 import rocks.zipcode.atm.bank.Bank;
 
@@ -26,6 +27,7 @@ public class LoginComponent {
 
 public List<Node> getLoginElements() {
     List<Node> elements = new ArrayList<>();
+    Stage window = new Stage();
 
     Text loginHeader = new Text("DRAGON BANK UNITED");
     loginHeader.setFont(Font.font("Verdana",30));
@@ -44,6 +46,8 @@ public List<Node> getLoginElements() {
         cashMachine.login(id);
 
         System.out.println(cashMachine.toString());
+        window.setScene(accountPage);
+
     });
 
 
