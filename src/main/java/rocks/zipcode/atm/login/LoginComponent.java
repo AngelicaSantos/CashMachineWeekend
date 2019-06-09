@@ -24,6 +24,7 @@ import rocks.zipcode.atm.bank.Bank;
 import rocks.zipcode.atm.CashMachineApp;
 import rocks.zipcode.atm.bank.AccountData;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -43,20 +44,22 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
     loginHeader.setFill(Color.DARKRED);
     Image logo = null;
     try {
-        logo = new Image(new FileInputStream("/Users/erichtepale/Documents/IntelliJ_Projects/CashMachineWeekend/src/images/dragonLogo.jpg"));
+        logo = new Image(new FileInputStream("/Users/angelicasantos/Desktop/ZipCodeAS/CashMachineWeekend/src/images/dragonLogo.jpg"));
     } catch (FileNotFoundException e) {
         e.printStackTrace();
     }
     ImageView finalPic = new ImageView(logo);
-    finalPic.setFitHeight(100);
-    finalPic.setFitWidth(100);
+    finalPic.setFitHeight(500);
+    finalPic.setFitWidth(500);
+    //finalPic.setX(300);
+    //finalPic.setY(300);
 
 
     Label accountIdLabel = new Label("Account ID : ");
 
     TextField accountIdTextField = new TextField();
 
-    Button btnLogin = new Button("LOGIN");
+    Button btnLogin = new Button("ENTER");
 
     TextFlow textFlowPane = new TextFlow();
     textFlowPane.setTextAlignment(TextAlignment.CENTER);
@@ -64,16 +67,21 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
     textFlowPane.setPadding(new Insets(10, 10, 10, 10));
     textFlowPane.getChildren().addAll(loginHeader);
 
+
+
+
     GridPane gridPane = new GridPane();
     gridPane.setMinSize(400, 200);
     gridPane.setPadding(new Insets(10, 10, 10, 10));
     gridPane.setVgap(30);
     gridPane.setHgap(30);
     gridPane.setAlignment(Pos.CENTER);
-    gridPane.getChildren().add(finalPic);
+    gridPane.add(finalPic, 1,1,3,3);
+    gridPane.setStyle("-fx-background-color: #ffffff");
     gridPane.add(accountIdLabel, 0, 3);
     gridPane.add(accountIdTextField, 1, 3);
-    gridPane.add(btnLogin, 1, 4);
+    gridPane.add(btnLogin, 2, 3);
+
 
     elements.add(textFlowPane);
     elements.add(gridPane);
