@@ -55,8 +55,11 @@ public class CashMachineApp extends Application {
 
         //Overdraft Message
         Text overDraftText = new Text ("Your balance is Overdraft");
-        overDraftText.setVisible(true);
+        overDraftText.setVisible(false);
         overDraftText.setId("overDraftText");
+        overDraftText.setFill(Color.RED);
+
+
 
      //Account field
         Label labelId = new Label("Account ID");
@@ -91,6 +94,11 @@ public class CashMachineApp extends Application {
             balance.setText(String.valueOf(cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
 
+            //overDraw add overdraw method
+            if(cashMachine.getAccountData().getBalance() > 0){
+                overDraftText.setVisible(false);
+            }
+
         });
 
         //Button Withdraw
@@ -101,6 +109,10 @@ public class CashMachineApp extends Application {
             balance.setText(String.valueOf(cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
 
+            //overdraw text
+            if(cashMachine.getAccountData().getBalance() < 0){
+                overDraftText.setVisible(true);
+            }
         });
 
 
@@ -139,6 +151,7 @@ public class CashMachineApp extends Application {
         //logout button action
         btLogin.setOnAction(e -> stage.setScene(scene1));
         stage.setTitle("Dragon Bank United");
+
         stage.setResizable(false);
         stage.setScene(scene1);
         stage.show();
