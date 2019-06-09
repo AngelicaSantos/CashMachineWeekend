@@ -69,6 +69,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
 
         stage.setScene(scene1);
         stage.show();
+        accountIdTextField.clear();
 
 
     });
