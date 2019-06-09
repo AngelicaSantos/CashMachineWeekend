@@ -95,7 +95,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
         email.setText(cashMachine.getAccountData().getEmail());
 
         TextField balance = (TextField) scene1.lookup("#balance");
-        balance.setText("" + cashMachine.getAccountData().getBalance());
+        balance.setText("" + String.format("%.2f",cashMachine.getAccountData().getBalance()));
 
 
         stage.setScene(scene1);
