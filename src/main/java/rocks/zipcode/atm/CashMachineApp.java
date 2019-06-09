@@ -36,7 +36,8 @@ public class CashMachineApp extends Application {
     private TextField field = new TextField();
     private CashMachine cashMachine = new CashMachine(new Bank());
 
-    private Parent createContent() {
+   /* This is Kavyas Login Screen */
+    private Parent createLogin() {
         VBox vbox = new VBox(10);
         vbox.setPrefSize(600, 600);
 
@@ -52,7 +53,7 @@ public class CashMachineApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(createContent()));
+        stage.setScene(new Scene(createLogin()));
         stage.show();
     }
 

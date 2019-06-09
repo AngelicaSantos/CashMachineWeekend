@@ -25,6 +25,7 @@ import java.util.List;
 public class LoginComponent {
     private CashMachine cashMachine = new CashMachine(new Bank());
 
+
 public List<Node> getLoginElements() {
     List<Node> elements = new ArrayList<>();
     Stage window = new Stage();
