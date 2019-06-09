@@ -24,11 +24,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginComponent {
-    private CashMachine cashMachine = new CashMachine(new Bank());
+    private CashMachine cashMachine;// = new CashMachine(new Bank());
 
     Stage stage2 = new Stage();
 
-public List<Node> getLoginElements(Stage stage, Scene scene1) {
+public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMachine) {
+    this.cashMachine = cashMachine;
     List<Node> elements = new ArrayList<>();
     Text loginHeader = new Text("DRAGON BANK UNITED");
     loginHeader.setFont(Font.font("Verdana",30));
@@ -63,8 +64,8 @@ public List<Node> getLoginElements(Stage stage, Scene scene1) {
     // Login Logic validate login maybe ? * //
     btnLogin.setOnAction(e -> {
         int id = Integer.parseInt(accountIdTextField.getText());
-        cashMachine.login(id);
-        System.out.println(cashMachine.toString());
+        this.cashMachine.login(id);
+        System.out.println(this.cashMachine.toString());
 
         stage.setScene(scene1);
         stage.show();
