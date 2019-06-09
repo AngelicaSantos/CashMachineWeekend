@@ -54,20 +54,24 @@ public class CashMachineApp extends Application {
 
      //Account field
         Label labelId = new Label("Account ID");
-        TextField id = new TextField("Id should autopopulate");
+        TextField id = new TextField("getId");
+        id.setId("accountId");
 
 
      //Name field
         Label labelName = new Label("Name");
         TextField name = new TextField("getName");
+        name.setId("accountName");
 
         //Email field
         Label labelEmail = new Label("Email");
         TextField email = new TextField("getEmail");
+        email.setId("email");
 
         //Balance field
-        Label labelBalance = new Label("Acccout Balance");
+        Label labelBalance = new Label("Accout Balance");
         TextField balance = new TextField("getBalance");
+        balance.setId("balance");
 
         //Transaction field
         Label labelTransaction = new Label("Transaction Amount");

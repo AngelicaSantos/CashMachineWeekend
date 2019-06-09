@@ -1,5 +1,6 @@
 package rocks.zipcode.atm.login;
 
+import rocks.*;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
 import rocks.zipcode.atm.CashMachine;
 import rocks.zipcode.atm.bank.Bank;
 import rocks.zipcode.atm.CashMachineApp;
+import rocks.zipcode.atm.bank.AccountData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +68,20 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
         int id = Integer.parseInt(accountIdTextField.getText());
         this.cashMachine.login(id);
         System.out.println(this.cashMachine.toString());
+
+        //set values
+        TextField accountId = (TextField) scene1.lookup("#accountId");
+        accountId.setText("" + cashMachine.getAccountData().getId());
+
+        TextField name = (TextField) scene1.lookup("#accountName");
+        name.setText(cashMachine.getAccountData().getName());
+
+        TextField email = (TextField) scene1.lookup("#email");
+        email.setText(cashMachine.getAccountData().getEmail());
+
+        TextField balance = (TextField) scene1.lookup("#balance");
+        balance.setText("" + cashMachine.getAccountData().getBalance());
+
 
         stage.setScene(scene1);
         stage.show();
