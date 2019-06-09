@@ -18,6 +18,7 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import rocks.zipcode.atm.CashMachine;
 import rocks.zipcode.atm.bank.Bank;
+import rocks.zipcode.atm.CashMachineApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +69,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
 
         stage.setScene(scene1);
         stage.show();
+        accountIdTextField.clear();
 
 
     });

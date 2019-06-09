@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.layout.FlowPane;
 import rocks.zipcode.atm.login.LoginComponent;
+import rocks.zipcode.atm.login.LoggedInComponent;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class CashMachineApp extends Application {
 
      //Account field
         Label labelId = new Label("Account ID");
-        TextField id = new TextField("getId");
+        TextField id = new TextField("Id should autopopulate");
 
 
      //Name field
@@ -70,14 +71,16 @@ public class CashMachineApp extends Application {
 
         //Transaction field
         Label labelTransaction = new Label("Transaction Amount");
-        TextField transaction = new TextField("getTransaction");
+        TextField transaction = new TextField();
+
+        //Account Type
+        TextField accountType = new TextField("actType");
 
         //Button Deposit
         Button btDeposit = new Button("Deposit");
         btDeposit.setOnAction(e -> {
             int amount = Integer.parseInt(transaction.getText());
             cashMachine.deposit(amount);
-
             balance.setText(String.valueOf(cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
 
@@ -85,6 +88,13 @@ public class CashMachineApp extends Application {
 
         //Button Withdraw
         Button btWithdraw = new Button("Withdraw");
+        btWithdraw.setOnAction(e -> {
+            int amount = Integer.parseInt(transaction.getText());
+            cashMachine.withdraw(amount);
+            balance.setText(String.valueOf(cashMachine.getBalance()));
+            System.out.println(cashMachine.toString());
+
+        });
 
 
         //Button Login
@@ -105,22 +115,22 @@ public class CashMachineApp extends Application {
         GridPane.setConstraints(btDeposit, 3, 4);
         GridPane.setConstraints(btWithdraw, 3, 5);
         GridPane.setConstraints(btLogin, 3, 8);
+        GridPane.setConstraints(accountType, 3, 0);
 
      //Layout accountPage
         GridPane accountPage = new GridPane();
         accountPage.setBackground(new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
         accountPage.setPadding(new Insets(10, 10, 10, 10));
         accountPage.getChildren().addAll(btLogin, labelId, id, name, labelName, labelEmail, email,
-                labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw);
+                labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw, accountType);
         accountPage.setVgap(10);
         accountPage.setHgap(10);
 
-        scene2 = new Scene(accountPage, 480, 350);
+        scene2 = new Scene(accountPage, 580, 350);
         scene1 =  new Scene(createLogin(stage, scene2));
 
         //logout button action
         btLogin.setOnAction(e -> stage.setScene(scene1));
-
         stage.setTitle("Dragon Bank United");
         stage.setResizable(false);
         stage.setScene(scene1);
