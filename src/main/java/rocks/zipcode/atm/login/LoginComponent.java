@@ -18,18 +18,26 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import rocks.zipcode.atm.CashMachine;
 import rocks.zipcode.atm.bank.Bank;
+import rocks.zipcode.atm.CashMachineApp;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoginComponent {
-    private CashMachine cashMachine = new CashMachine(new Bank());
+    private CashMachine cashMachine;// = new CashMachine(new Bank());
 
+<<<<<<< HEAD
 
 public List<Node> getLoginElements() {
     List<Node> elements = new ArrayList<>();
     Stage window = new Stage();
+=======
+    Stage stage2 = new Stage();
+>>>>>>> f3931cb389e4b3bde61e5b97c71c651e8dada382
 
+public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMachine) {
+    this.cashMachine = cashMachine;
+    List<Node> elements = new ArrayList<>();
     Text loginHeader = new Text("DRAGON BANK UNITED");
     loginHeader.setFont(Font.font("Verdana",30));
     loginHeader.setTextAlignment(TextAlignment.RIGHT);
@@ -40,22 +48,6 @@ public List<Node> getLoginElements() {
     TextField accountIdTextField = new TextField();
 
     Button btnLogin = new Button("LOGIN");
-
-    // Login Logic * erick Code * //
-    btnLogin.setOnAction(e -> {
-        int id = Integer.parseInt(accountIdTextField.getText());
-        cashMachine.login(id);
-
-        System.out.println(cashMachine.toString());
-  //      window.setScene(accountPage);
-
-    });
-
-
-   /*elements.add(loginHeader);
-   elements.add(accountIdLabel);
-   elements.add(accountIdTextField);
-   elements.add(btnLogin);*/
 
     TextFlow textFlowPane = new TextFlow();
     textFlowPane.setTextAlignment(TextAlignment.CENTER);
@@ -75,7 +67,21 @@ public List<Node> getLoginElements() {
 
     elements.add(textFlowPane);
     elements.add(gridPane);
+
+    // Login Logic validate login maybe ? * //
+    btnLogin.setOnAction(e -> {
+        int id = Integer.parseInt(accountIdTextField.getText());
+        this.cashMachine.login(id);
+        System.out.println(this.cashMachine.toString());
+
+        stage.setScene(scene1);
+        stage.show();
+        accountIdTextField.clear();
+
+
+    });
+
     return elements;
 
-}
+    }
 }
