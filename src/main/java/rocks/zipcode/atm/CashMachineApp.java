@@ -38,12 +38,12 @@ public class CashMachineApp extends Application {
     Scene scene1, scene2;
 
     /* this is Kayva login screen */
-    private Parent createLogin() {
+    private Parent createLogin(Stage stage, Scene scene1) {
         VBox vbox = new VBox(10);
         vbox.setPrefSize(600, 600);
         //vbox.getChildren().addAll(field, flowpane, areaInfo);
         LoginComponent loginComponent = new LoginComponent();
-        List<Node> list = loginComponent.getLoginElements();
+        List<Node> list = loginComponent.getLoginElements(stage, scene1);
         Node[] nodes = list.toArray(new Node[]{});
         vbox.getChildren().addAll(nodes);
         return vbox;
@@ -51,8 +51,6 @@ public class CashMachineApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-//        stage.setScene(new Scene(createLogin()));
-
 
      //Account field
         Label labelId = new Label("Account ID");
@@ -80,9 +78,9 @@ public class CashMachineApp extends Application {
         //Button Withdraw
         Button btWithdraw = new Button("Withdraw");
 
+
         //Button Login
         Button btLogin = new Button("Logout");
-        btLogin.setOnAction(e -> stage.setScene(new Scene(createLogin())));
 
 
     //Grid layout
@@ -110,12 +108,15 @@ public class CashMachineApp extends Application {
         accountPage.setHgap(10);
 
         scene2 = new Scene(accountPage, 480, 350);
+        scene1 =  new Scene(createLogin(stage, scene2));
+
+        //logout button action
+        btLogin.setOnAction(e -> stage.setScene(scene1));
 
         stage.setTitle("Dragon Bank United");
         stage.setResizable(false);
-        stage.setScene(scene2);
+        stage.setScene(scene1);
         stage.show();
-
 
     }
 
