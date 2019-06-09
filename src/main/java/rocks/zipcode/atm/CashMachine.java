@@ -29,11 +29,11 @@ public class CashMachine {
         );
     }
 
-    public Integer getBalance(){
+    public Float getBalance(){
         return accountData.getBalance();
     }
 
-    public void deposit(int amount) {
+    public void deposit(Float amount) {
         if (accountData != null) {
             tryCall(
                     () -> bank.deposit(accountData, amount),
