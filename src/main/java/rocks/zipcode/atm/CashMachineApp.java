@@ -73,6 +73,9 @@ public class CashMachineApp extends Application {
         Label labelTransaction = new Label("Transaction Amount");
         TextField transaction = new TextField();
 
+        //Account Type
+        TextField accountType = new TextField("actType");
+
         //Button Deposit
         Button btDeposit = new Button("Deposit");
         btDeposit.setOnAction(e -> {
@@ -112,22 +115,22 @@ public class CashMachineApp extends Application {
         GridPane.setConstraints(btDeposit, 3, 4);
         GridPane.setConstraints(btWithdraw, 3, 5);
         GridPane.setConstraints(btLogin, 3, 8);
+        GridPane.setConstraints(accountType, 3, 0);
 
      //Layout accountPage
         GridPane accountPage = new GridPane();
         accountPage.setBackground(new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
         accountPage.setPadding(new Insets(10, 10, 10, 10));
         accountPage.getChildren().addAll(btLogin, labelId, id, name, labelName, labelEmail, email,
-                labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw);
+                labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw, accountType);
         accountPage.setVgap(10);
         accountPage.setHgap(10);
 
-        scene2 = new Scene(accountPage, 480, 350);
+        scene2 = new Scene(accountPage, 580, 350);
         scene1 =  new Scene(createLogin(stage, scene2));
 
         //logout button action
         btLogin.setOnAction(e -> stage.setScene(scene1));
-
         stage.setTitle("Dragon Bank United");
         stage.setResizable(false);
         stage.setScene(scene1);
