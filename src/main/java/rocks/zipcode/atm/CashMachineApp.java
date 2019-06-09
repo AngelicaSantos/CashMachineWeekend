@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -52,6 +53,11 @@ public class CashMachineApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+        //Overdraft Message
+        Text overDraftText = new Text ("Your balance is Overdraft");
+        overDraftText.setVisible(true);
+        overDraftText.setId("overDraftText");
+
      //Account field
         Label labelId = new Label("Account ID");
         TextField id = new TextField("getId");
@@ -76,9 +82,6 @@ public class CashMachineApp extends Application {
         //Transaction field
         Label labelTransaction = new Label("Transaction Amount");
         TextField transaction = new TextField();
-
-        //Account Type
-        TextField accountType = new TextField("actType");
 
         //Button Deposit
         Button btDeposit = new Button("Deposit");
@@ -119,14 +122,14 @@ public class CashMachineApp extends Application {
         GridPane.setConstraints(btDeposit, 3, 4);
         GridPane.setConstraints(btWithdraw, 3, 5);
         GridPane.setConstraints(btLogin, 3, 8);
-        GridPane.setConstraints(accountType, 3, 0);
+        GridPane.setConstraints(overDraftText, 3, 0);
 
      //Layout accountPage
         GridPane accountPage = new GridPane();
         accountPage.setBackground(new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
         accountPage.setPadding(new Insets(10, 10, 10, 10));
         accountPage.getChildren().addAll(btLogin, labelId, id, name, labelName, labelEmail, email,
-                labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw, accountType);
+                labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw, overDraftText);
         accountPage.setVgap(10);
         accountPage.setHgap(10);
 
