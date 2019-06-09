@@ -71,14 +71,13 @@ public class CashMachineApp extends Application {
 
         //Transaction field
         Label labelTransaction = new Label("Transaction Amount");
-        TextField transaction = new TextField("getTransaction");
+        TextField transaction = new TextField();
 
         //Button Deposit
         Button btDeposit = new Button("Deposit");
         btDeposit.setOnAction(e -> {
             int amount = Integer.parseInt(transaction.getText());
             cashMachine.deposit(amount);
-
             balance.setText(String.valueOf(cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
 
@@ -86,6 +85,13 @@ public class CashMachineApp extends Application {
 
         //Button Withdraw
         Button btWithdraw = new Button("Withdraw");
+        btWithdraw.setOnAction(e -> {
+            int amount = Integer.parseInt(transaction.getText());
+            cashMachine.withdraw(amount);
+            balance.setText(String.valueOf(cashMachine.getBalance()));
+            System.out.println(cashMachine.toString());
+
+        });
 
 
         //Button Login
