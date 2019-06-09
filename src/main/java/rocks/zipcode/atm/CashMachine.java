@@ -29,6 +29,10 @@ public class CashMachine {
         );
     }
 
+    public Integer getBalance(){
+        return accountData.getBalance();
+    }
+
     public void deposit(int amount) {
         if (accountData != null) {
             tryCall(

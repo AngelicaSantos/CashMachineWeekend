@@ -42,7 +42,7 @@ public class CashMachineApp extends Application {
         vbox.setPrefSize(600, 600);
         //vbox.getChildren().addAll(field, flowpane, areaInfo);
         LoginComponent loginComponent = new LoginComponent();
-        List<Node> list = loginComponent.getLoginElements(stage, scene1);
+        List<Node> list = loginComponent.getLoginElements(stage, scene1, cashMachine);
         Node[] nodes = list.toArray(new Node[]{});
         vbox.getChildren().addAll(nodes);
         return vbox;
@@ -54,6 +54,7 @@ public class CashMachineApp extends Application {
      //Account field
         Label labelId = new Label("Account ID");
         TextField id = new TextField("getId");
+
 
      //Name field
         Label labelName = new Label("Name");
@@ -73,6 +74,14 @@ public class CashMachineApp extends Application {
 
         //Button Deposit
         Button btDeposit = new Button("Deposit");
+        btDeposit.setOnAction(e -> {
+            int amount = Integer.parseInt(transaction.getText());
+            cashMachine.deposit(amount);
+
+            balance.setText(String.valueOf(cashMachine.getBalance()));
+            System.out.println(cashMachine.toString());
+
+        });
 
         //Button Withdraw
         Button btWithdraw = new Button("Withdraw");
