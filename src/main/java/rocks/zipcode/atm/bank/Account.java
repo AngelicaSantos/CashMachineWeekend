@@ -28,7 +28,7 @@ public abstract class Account {
         }
     }
 
-    protected boolean canWithdraw(int amount) {
+    protected boolean canWithdraw(Float amount) {
         return getBalance() >= amount;
     }
 
