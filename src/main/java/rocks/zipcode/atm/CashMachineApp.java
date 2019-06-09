@@ -104,7 +104,7 @@ public class CashMachineApp extends Application {
         //Button Withdraw
         Button btWithdraw = new Button("Withdraw");
         btWithdraw.setOnAction(e -> {
-            int amount = Integer.parseInt(transaction.getText());
+            Float amount = Float.valueOf(Integer.parseInt(transaction.getText()));
             cashMachine.withdraw(amount);
             balance.setText(String.valueOf(cashMachine.getBalance()));
             System.out.println(cashMachine.toString());

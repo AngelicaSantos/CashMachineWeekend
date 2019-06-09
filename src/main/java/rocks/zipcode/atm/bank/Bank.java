@@ -52,7 +52,7 @@ public class Bank {
         return ActionResult.success(account.getAccountData());
     }
 
-    public ActionResult<AccountData> withdraw(AccountData accountData, int amount) {
+    public ActionResult<AccountData> withdraw(AccountData accountData, Float amount) {
         Account account = accounts.get(accountData.getId());
         boolean ok = account.withdraw(amount);
 
