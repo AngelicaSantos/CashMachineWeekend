@@ -40,13 +40,6 @@ public List<Node> getLoginElements(Stage stage, Scene scene1) {
 
     Button btnLogin = new Button("LOGIN");
 
-
-
-
-   /*elements.add(loginHeader);
-   elements.add(accountIdLabel);
-   elements.add(accountIdTextField);
-   elements.add(btnLogin);*/
     TextFlow textFlowPane = new TextFlow();
     textFlowPane.setTextAlignment(TextAlignment.CENTER);
     textFlowPane.setPrefSize(400, 20);
@@ -66,7 +59,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1) {
     elements.add(textFlowPane);
     elements.add(gridPane);
 
-    // Login Logic * erick Code * //
+    // Login Logic validate login maybe ? * //
     btnLogin.setOnAction(e -> {
         int id = Integer.parseInt(accountIdTextField.getText());
         cashMachine.login(id);

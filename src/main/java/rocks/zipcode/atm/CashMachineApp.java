@@ -50,13 +50,6 @@ public class CashMachineApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // Erick code ?
-//        LoginComponent loginScreen = new LoginComponent();
-//        loginScreen.getLoginElements(stage, scene1);
-
-
-
-
 
      //Account field
         Label labelId = new Label("Account ID");
@@ -113,19 +106,16 @@ public class CashMachineApp extends Application {
         accountPage.setVgap(10);
         accountPage.setHgap(10);
 
-
-
-
         scene2 = new Scene(accountPage, 480, 350);
         scene1 =  new Scene(createLogin(stage, scene2));
 
         //logout button action
         btLogin.setOnAction(e -> stage.setScene(scene1));
+
         stage.setTitle("Dragon Bank United");
         stage.setResizable(false);
         stage.setScene(scene1);
         stage.show();
-
 
     }
 
