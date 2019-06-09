@@ -1,5 +1,7 @@
 package rocks.zipcode.atm.login;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import rocks.*;
 
 import javafx.geometry.Insets;
@@ -22,6 +24,8 @@ import rocks.zipcode.atm.bank.Bank;
 import rocks.zipcode.atm.CashMachineApp;
 import rocks.zipcode.atm.bank.AccountData;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +40,17 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
     Text loginHeader = new Text("DRAGON BANK UNITED");
     loginHeader.setFont(Font.font("Verdana",30));
     loginHeader.setTextAlignment(TextAlignment.RIGHT);
-    loginHeader.setFill(Color.PURPLE);
+    loginHeader.setFill(Color.DARKRED);
+    Image logo = null;
+    try {
+        logo = new Image(new FileInputStream("/Users/erichtepale/Documents/IntelliJ_Projects/CashMachineWeekend/src/images/dragonLogo.jpg"));
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+    ImageView finalPic = new ImageView(logo);
+    finalPic.setFitHeight(100);
+    finalPic.setFitWidth(100);
+
 
     Label accountIdLabel = new Label("Account ID : ");
 
@@ -56,6 +70,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
     gridPane.setVgap(30);
     gridPane.setHgap(30);
     gridPane.setAlignment(Pos.CENTER);
+    gridPane.getChildren().add(finalPic);
     gridPane.add(accountIdLabel, 0, 3);
     gridPane.add(accountIdTextField, 1, 3);
     gridPane.add(btnLogin, 1, 4);
