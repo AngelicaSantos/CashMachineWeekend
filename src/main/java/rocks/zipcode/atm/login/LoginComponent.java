@@ -18,6 +18,7 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import rocks.zipcode.atm.CashMachine;
 import rocks.zipcode.atm.bank.Bank;
+import rocks.zipcode.atm.CashMachineApp;
 
 import java.util.ArrayList;
 import java.util.List;

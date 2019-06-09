@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.layout.FlowPane;
 import rocks.zipcode.atm.login.LoginComponent;
+import rocks.zipcode.atm.login.LoggedInComponent;
 
 import java.util.List;
 
