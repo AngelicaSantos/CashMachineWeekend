@@ -54,7 +54,7 @@ public class CashMachineApp extends Application {
 
      //Account field
         Label labelId = new Label("Account ID");
-        TextField id = new TextField("getId");
+        TextField id = new TextField("Id is an int");
 
      //Name field
         Label labelName = new Label("Name");
