@@ -8,6 +8,7 @@ public final class AccountData {
     private final int id;
     private final String name;
     private final String email;
+    private String type;
 
     private final int balance;
 
@@ -41,4 +42,5 @@ public final class AccountData {
                 "Email: " + email + '\n' +
                 "Balance: " + balance;
     }
+
 }
