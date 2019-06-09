@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -52,6 +53,11 @@ public class CashMachineApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+     // OverDraft Message
+     Text overDraftText = new Text("your balance is overdraft");
+     overDraftText.setVisible(true);
+     overDraftText.setId("OverDrafttext");
+
      //Account field
         Label labelId = new Label("Account ID");
         TextField id = new TextField("getId");
@@ -79,6 +85,7 @@ public class CashMachineApp extends Application {
 
         //Account Type
         TextField accountType = new TextField("actType");
+
 
         //Button Deposit
         Button btDeposit = new Button("Deposit");
