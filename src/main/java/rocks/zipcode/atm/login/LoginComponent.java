@@ -60,6 +60,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
     TextField accountIdTextField = new TextField();
 
     Button btnLogin = new Button("ENTER");
+    Button btnCreateAccount = new Button("Create Account");
 
     TextFlow textFlowPane = new TextFlow();
     textFlowPane.setTextAlignment(TextAlignment.CENTER);
@@ -81,6 +82,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
     gridPane.add(accountIdLabel, 0, 3);
     gridPane.add(accountIdTextField, 1, 3);
     gridPane.add(btnLogin, 2, 3);
+    gridPane.add(btnCreateAccount,4,4);
 
 
     elements.add(textFlowPane);
