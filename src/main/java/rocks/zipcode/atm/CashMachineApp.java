@@ -90,7 +90,7 @@ public class CashMachineApp extends Application {
         Button btDeposit = new Button("Deposit");
         btDeposit.setOnAction(e -> {
             int amount = Integer.parseInt(transaction.getText());
-            cashMachine.deposit(amount);
+            cashMachine.deposit(Float.valueOf(amount));
             balance.setText(String.valueOf(cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
 
@@ -138,7 +138,8 @@ public class CashMachineApp extends Application {
 
      //Layout accountPage
         GridPane accountPage = new GridPane();
-        accountPage.setBackground(new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        accountPage.setBackground(new Background(new BackgroundFill(Color.rgb(219, 120, 6), CornerRadii.EMPTY, Insets.EMPTY)));
         accountPage.setPadding(new Insets(10, 10, 10, 10));
         accountPage.getChildren().addAll(btLogin, labelId, id, name, labelName, labelEmail, email,
                 labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw, overDraftText);
