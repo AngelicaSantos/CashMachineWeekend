@@ -1,5 +1,6 @@
 package rocks.zipcode.atm.login;
 
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import rocks.*;
@@ -24,6 +25,7 @@ import rocks.zipcode.atm.bank.Bank;
 import rocks.zipcode.atm.CashMachineApp;
 import rocks.zipcode.atm.bank.AccountData;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -57,7 +59,13 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
 
     Label accountIdLabel = new Label("Account ID : ");
 
-    TextField accountIdTextField = new TextField();
+    //TextField accountIdTextField = new TextField();
+    ComboBox accountIdTextField = new ComboBox();
+    accountIdTextField.getItems().addAll("1000");
+    accountIdTextField.getItems().addAll("2000");
+    accountIdTextField.getItems().addAll("3000");
+    accountIdTextField.getItems().addAll("4000");
+    accountIdTextField.getItems().addAll("5000");
 
     Button btnLogin = new Button("ENTER");
     Button btnCreateAccount = new Button("Create Account");
@@ -90,7 +98,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
 
     // Login Logic validate login maybe ? * //
     btnLogin.setOnAction(e -> {
-        int id = Integer.parseInt(accountIdTextField.getText());
+        int id = Integer.parseInt(accountIdTextField.getValue().toString()); // changed to string
         this.cashMachine.login(id);
         System.out.println(this.cashMachine.toString());
 
@@ -110,7 +118,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
 
         stage.setScene(scene1);
         stage.show();
-        accountIdTextField.clear();
+        //accountIdTextField.clear();
 
     });
 
