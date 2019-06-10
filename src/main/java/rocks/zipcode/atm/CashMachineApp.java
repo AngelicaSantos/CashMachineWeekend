@@ -153,6 +153,9 @@ public class CashMachineApp extends Application {
         btLogin.setOnAction(e -> stage.setScene(scene1));
         stage.setTitle("Dragon Bank United");
 
+        //premium membs
+
+
         stage.setResizable(false);
         stage.setScene(scene1);
         stage.show();
