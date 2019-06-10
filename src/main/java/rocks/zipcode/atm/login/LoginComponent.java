@@ -48,7 +48,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
     loginHeader.setFill(Color.DARKRED);
     Image logo = null;
     try {
-        logo = new Image(new FileInputStream("/Users/erichtepale/Documents/IntelliJ_Projects/CashMachineWeekend/src/images/dragonLogo.jpg"));
+        logo = new Image(new FileInputStream("/Users/angelicasantos/Desktop/ZipCodeAS/CashMachineWeekend/src/images/dragonLogo.jpg"));
     } catch (FileNotFoundException e) {
         e.printStackTrace();
     }

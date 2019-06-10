@@ -40,6 +40,9 @@ public class CreateAccountComponent {
         Label nameLabel = new Label("Name : ");
         TextField nameTextField = new TextField();
 
+        //Text overDraftText = new Text();
+       // overDraftText.setVisible(false);
+
         Label emailLabel = new Label("Email : ");
         TextField emailTextField = new TextField();
 
