@@ -36,7 +36,8 @@ public class Bank {
     }
 
     public Integer insertBasic(String name, String email, String amount){
-        Integer id = accounts.get(accounts.size()).getAccountData().getId() + 1000;
+
+        Integer id = (int)(Math.random() * 6000 + 4999);//accounts.get(accounts.size()).getAccountData().getId() + 1000;
         accounts.put(id, new BasicAccount(new AccountData(
                 id + 1000, name, email, Float.valueOf(amount)
         )));
@@ -45,7 +46,7 @@ public class Bank {
     }
 
     public Integer insertPremium(String name, String email, String amount){
-        Integer id = accounts.get(accounts.size()).getAccountData().getId() + 1000;
+        Integer id = (int)(Math.random() * 6000 + 4999);//accounts.get(accounts.size()).getAccountData().getId() + 1000;
         accounts.put(id, new PremiumAccount(new AccountData(
                 id, name, email, Float.valueOf(amount)
         )));

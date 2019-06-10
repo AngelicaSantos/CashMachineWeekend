@@ -18,6 +18,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import rocks.zipcode.atm.bank.Bank;
 import rocks.zipcode.atm.login.LoginComponent;
 
 import java.io.FileInputStream;
@@ -31,7 +32,7 @@ public class CreateAccountComponent {
 
     Stage stage2 = new Stage();
 
-    public List<Node> getCreateAccountElements(Stage stage, Scene scene1, CashMachine cashMachine, Scene scene2) {
+    public List<Node> getCreateAccountElements(Stage stage, Scene scene1, CashMachine cashMachine, Scene scene2, ComboBox accountIdCombo) {
 
         this.cashMachine = cashMachine;
         List<Node> elements = new ArrayList<>();
@@ -57,9 +58,47 @@ public class CreateAccountComponent {
 
         Button btnCreateAccount = new Button("Create Account");
         btnCreateAccount.setOnAction(e ->{
-         if(accountTypeField.getValue().toString().equals("Basic")){
+            Bank bank = cashMachine.getBank();
 
-         }
+            if(accountTypeField.getValue().toString().equals("Basic")){
+                if(nameTextField.getText().length() > 0 && emailTextField.getText().length() > 0){
+                    if(Integer.parseInt(depositField.getText()) > 0)
+                       accountIdCombo.getItems().add(bank.insertBasic(nameTextField.getText(), emailTextField.getText(), depositField.getText() ));
+                    else
+                        accountIdCombo.getItems().add(bank.insertBasic(nameTextField.getText(), emailTextField.getText(), "0" ));
+
+
+
+                    //switch scene
+                    VBox vbox = new VBox(10);
+                    vbox.setPrefSize(600, 600);
+                    LoginComponent a = new LoginComponent();
+
+                    List<Node> list = a.getLoginElements(stage, scene1, cashMachine, scene2, accountIdCombo);
+                    Node[] nodes = list.toArray(new Node[]{});
+                    vbox.getChildren().addAll(nodes);
+
+                    stage.setScene(new Scene(vbox));
+                    stage.show();
+                }
+            } else if(accountTypeField.getValue().toString().equals("Premium")) {
+                if(Integer.parseInt(depositField.getText()) > 0)
+                    accountIdCombo.getItems().add(bank.insertPremium(nameTextField.getText(), emailTextField.getText(), depositField.getText() ));
+                else
+                    accountIdCombo.getItems().add(bank.insertPremium(nameTextField.getText(), emailTextField.getText(), "0" ));
+
+                //switch scene
+                VBox vbox = new VBox(10);
+                vbox.setPrefSize(600, 600);
+                LoginComponent a = new LoginComponent();
+
+                List<Node> list = a.getLoginElements(stage, scene1, cashMachine, scene2, accountIdCombo);
+                Node[] nodes = list.toArray(new Node[]{});
+                vbox.getChildren().addAll(nodes);
+
+                stage.setScene(new Scene(vbox));
+                stage.show();
+            }
         });
 
 

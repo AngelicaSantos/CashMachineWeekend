@@ -35,6 +35,9 @@ public class CashMachine {
 //                update
 //        );
     }
+    public Bank getBank(){
+        return bank;
+    }
 
     public void insertPremium(int id) {
         tryCall(
