@@ -39,7 +39,7 @@ public class LoginComponent {
 
     Stage stage2 = new Stage();
 
-public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMachine) {
+public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMachine, Scene scene2) {
     this.cashMachine = cashMachine;
     List<Node> elements = new ArrayList<>();
     Text loginHeader = new Text("DRAGON BANK UNITED");
@@ -126,7 +126,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
 
     btnCreateAccount.setOnAction(e -> {
 
-        Scene createAccountScene = new Scene(createAccount(stage, scene1));
+        Scene createAccountScene = new Scene(createAccount(stage, scene1, scene2));
         stage.setScene(createAccountScene);
         stage.show();
     });
@@ -135,11 +135,11 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
 
     }
 
-    private Parent createAccount(Stage stage, Scene scene) {
+    private Parent createAccount(Stage stage, Scene scene, Scene scene2) {
         VBox vbox = new VBox(10);
         vbox.setPrefSize(600, 600);
         CreateAccountComponent createAccountComponent = new CreateAccountComponent();
-        List<Node> list = createAccountComponent.getCreateAccountElements(stage, scene, cashMachine);
+        List<Node> list = createAccountComponent.getCreateAccountElements(stage, scene, cashMachine, scene2);
         Node[] nodes = list.toArray(new Node[]{});
         vbox.getChildren().addAll(nodes);
         return vbox;

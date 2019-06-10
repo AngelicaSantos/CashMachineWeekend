@@ -44,7 +44,7 @@ public class CashMachineApp extends Application {
         vbox.setPrefSize(600, 600);
         //vbox.getChildren().addAll(field, flowpane, areaInfo);
         LoginComponent loginComponent = new LoginComponent();
-        List<Node> list = loginComponent.getLoginElements(stage, scene1, cashMachine);
+        List<Node> list = loginComponent.getLoginElements(stage, scene1, cashMachine, scene2);
         Node[] nodes = list.toArray(new Node[]{});
         vbox.getChildren().addAll(nodes);
         return vbox;

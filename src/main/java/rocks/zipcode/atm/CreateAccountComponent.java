@@ -5,17 +5,20 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import rocks.zipcode.atm.login.LoginComponent;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,7 +31,7 @@ public class CreateAccountComponent {
 
     Stage stage2 = new Stage();
 
-    public List<Node> getCreateAccountElements(Stage stage, Scene scene1, CashMachine cashMachine) {
+    public List<Node> getCreateAccountElements(Stage stage, Scene scene1, CashMachine cashMachine, Scene scene2) {
 
         this.cashMachine = cashMachine;
         List<Node> elements = new ArrayList<>();
@@ -43,13 +46,36 @@ public class CreateAccountComponent {
         Label emailLabel = new Label("Email : ");
         TextField emailTextField = new TextField();
 
+
         Label accountTypeLabel = new Label("Account Type : ");
-        TextField accountTypeField = new TextField();
+        ComboBox accountTypeField = new ComboBox();
+        accountTypeField.getItems().addAll("Basic", "Premium");
+//        TextField accountTypeField = new TextField();
 
         Label depositLabel = new Label("Deposit Amount : ");
         TextField depositField = new TextField();
 
         Button btnCreateAccount = new Button("Create Account");
+        btnCreateAccount.setOnAction(e ->{
+         if(accountTypeField.getValue().toString().equals("Basic")){
+
+         }
+        });
+
+
+        Button backToLogin = new Button("Back");
+        backToLogin.setOnAction(e -> {
+            VBox vbox = new VBox(10);
+            vbox.setPrefSize(600, 600);
+            LoginComponent a = new LoginComponent();
+
+            List<Node> list = a.getLoginElements(stage, scene1, cashMachine, scene2);
+            Node[] nodes = list.toArray(new Node[]{});
+            vbox.getChildren().addAll(nodes);
+
+            stage.setScene(new Scene(vbox));
+            stage.show();
+        });
 
         TextFlow textFlowPane = new TextFlow();
         textFlowPane.setTextAlignment(TextAlignment.CENTER);
@@ -73,6 +99,7 @@ public class CreateAccountComponent {
         gridPane.add(depositLabel, 0, 5);
         gridPane.add(depositField, 1, 5);
         gridPane.add(btnCreateAccount,1,6);
+        gridPane.add(backToLogin, 2, 6);
 
 
         elements.add(textFlowPane);

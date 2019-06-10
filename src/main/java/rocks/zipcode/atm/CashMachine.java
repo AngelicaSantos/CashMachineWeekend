@@ -29,6 +29,20 @@ public class CashMachine {
         );
     }
 
+    public void insertBasic(String name, String email, String amount) {
+//        tryCall(
+//                () -> bank.insertBasic(name, email, amount),
+//                update
+//        );
+    }
+
+    public void insertPremium(int id) {
+        tryCall(
+                () -> bank.getAccountById(id),
+                update
+        );
+    }
+
     public Float getBalance(){
         return accountData.getBalance();
     }

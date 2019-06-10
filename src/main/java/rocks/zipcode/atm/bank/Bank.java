@@ -53,6 +53,10 @@ public class Bank {
         return id;
     }
 
+    public Map<Integer, Account> getMap (){
+        return accounts;
+    }
+
     public ActionResult<AccountData> getAccountById(int id) {
         Account account = accounts.get(id);
 
