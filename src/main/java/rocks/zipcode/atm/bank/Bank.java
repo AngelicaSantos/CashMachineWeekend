@@ -18,21 +18,39 @@ public class Bank {
         )));
 
         accounts.put(2000, new PremiumAccount(new AccountData(
-                2000, "Example 2", "example2@gmail.com", Float.valueOf(200)
+                2000, "Example 2", "example2@gmail.com", Float.parseFloat("200")
         )));
 
         accounts.put(3000, new PremiumAccount(new AccountData(
-                3000, "Example 3", "example3@gmail.com", Float.valueOf(600)
+                3000, "Example 3", "example3@gmail.com", Float.parseFloat("600")
         )));
 
         accounts.put(4000, new BasicAccount(new AccountData(
-                4000, "Example 4", "example4@gmail.com", Float.valueOf(100)
+                4000, "Example 4", "example4@gmail.com", Float.parseFloat("100")
         )));
 
         accounts.put(5000, new PremiumAccount(new AccountData(
-                5000, "Example 5", "example5@gmail.com", Float.valueOf(700)
+                5000, "Example 5", "example5@gmail.com", Float.parseFloat("700")
         )));
 
+    }
+
+    public Integer insertBasic(String name, String email, String amount){
+        Integer id = accounts.get(accounts.size()).getAccountData().getId() + 1000;
+        accounts.put(id, new BasicAccount(new AccountData(
+                id + 1000, name, email, Float.valueOf(amount)
+        )));
+
+        return id;
+    }
+
+    public Integer insertPremium(String name, String email, String amount){
+        Integer id = accounts.get(accounts.size()).getAccountData().getId() + 1000;
+        accounts.put(id, new PremiumAccount(new AccountData(
+                id, name, email, Float.valueOf(amount)
+        )));
+
+        return id;
     }
 
     public ActionResult<AccountData> getAccountById(int id) {
