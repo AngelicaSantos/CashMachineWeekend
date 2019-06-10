@@ -139,7 +139,7 @@ public class CashMachineApp extends Application {
      //Layout accountPage
         GridPane accountPage = new GridPane();
 
-        accountPage.setBackground(new Background(new BackgroundFill(Color.rgb(219, 120, 6), CornerRadii.EMPTY, Insets.EMPTY)));
+        accountPage.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         accountPage.setPadding(new Insets(10, 10, 10, 10));
         accountPage.getChildren().addAll(btLogin, labelId, id, name, labelName, labelEmail, email,
                 labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw, overDraftText);
