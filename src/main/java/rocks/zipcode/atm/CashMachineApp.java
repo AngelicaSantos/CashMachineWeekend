@@ -150,7 +150,10 @@ public class CashMachineApp extends Application {
         scene1 =  new Scene(createLogin(stage, scene2));
 
         //logout button action
-        btLogin.setOnAction(e -> stage.setScene(scene1));
+        btLogin.setOnAction(e -> {
+            overDraftText.setVisible(false);
+            stage.setScene(scene1);
+        });
         stage.setTitle("Dragon Bank United");
 
         //premium membs
