@@ -55,7 +55,7 @@ public class CashMachineApp extends Application {
 
         //Overdraft Message
         Text overDraftText = new Text ("Your balance is Overdraft");
-        overDraftText.setVisible(true);
+        overDraftText.setVisible(false);
         overDraftText.setId("overDraftText");
 
      //Account field
@@ -90,6 +90,7 @@ public class CashMachineApp extends Application {
             cashMachine.deposit(amount);
             balance.setText(String.valueOf(cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
+            transaction.clear();
 
         });
 
@@ -100,6 +101,7 @@ public class CashMachineApp extends Application {
             cashMachine.withdraw(amount);
             balance.setText(String.valueOf(cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
+            transaction.clear();
 
         });
 
