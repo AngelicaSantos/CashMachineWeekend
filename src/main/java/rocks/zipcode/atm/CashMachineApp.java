@@ -99,6 +99,7 @@ public class CashMachineApp extends Application {
                 overDraftText.setVisible(false);
             }
 
+
         });
 
         //Button Withdraw
@@ -113,6 +114,8 @@ public class CashMachineApp extends Application {
             if(cashMachine.getAccountData().getBalance() < 0){
                 overDraftText.setVisible(true);
             }
+
+
         });
 
 
