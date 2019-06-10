@@ -39,7 +39,7 @@ public class Bank {
 
         Integer id = (int)(Math.random() * 6000 + 4999);//accounts.get(accounts.size()).getAccountData().getId() + 1000;
         accounts.put(id, new BasicAccount(new AccountData(
-                id + 1000, name, email, Float.valueOf(amount)
+                id, name, email, Float.valueOf(amount)
         )));
 
         return id;

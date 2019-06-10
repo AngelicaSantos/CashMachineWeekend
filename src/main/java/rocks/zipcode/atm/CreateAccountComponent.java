@@ -61,6 +61,7 @@ public class CreateAccountComponent {
             Bank bank = cashMachine.getBank();
 
             if(accountTypeField.getValue().toString().equals("Basic")){
+                System.out.println(nameTextField.getText());
                 if(nameTextField.getText().length() > 0 && emailTextField.getText().length() > 0){
                     if(Integer.parseInt(depositField.getText()) > 0)
                        accountIdCombo.getItems().add(bank.insertBasic(nameTextField.getText(), emailTextField.getText(), depositField.getText() ));
@@ -82,6 +83,7 @@ public class CreateAccountComponent {
                     stage.show();
                 }
             } else if(accountTypeField.getValue().toString().equals("Premium")) {
+                System.out.println(nameTextField.getText());
                 if(Integer.parseInt(depositField.getText()) > 0)
                     accountIdCombo.getItems().add(bank.insertPremium(nameTextField.getText(), emailTextField.getText(), depositField.getText() ));
                 else
