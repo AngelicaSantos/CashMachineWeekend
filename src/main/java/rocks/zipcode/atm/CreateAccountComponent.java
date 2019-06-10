@@ -110,7 +110,7 @@ public class CreateAccountComponent {
             vbox.setPrefSize(600, 600);
             LoginComponent a = new LoginComponent();
 
-            List<Node> list = a.getLoginElements(stage, scene1, cashMachine, scene2);
+            List<Node> list = a.getLoginElements(stage, scene1, cashMachine, scene2, accountIdCombo);
             Node[] nodes = list.toArray(new Node[]{});
             vbox.getChildren().addAll(nodes);
 

@@ -36,11 +36,11 @@ import java.util.List;
 
 public class LoginComponent {
     private CashMachine cashMachine;// = new CashMachine(new Bank());
-
-    Stage stage2 = new Stage();
+    private ComboBox comboBoxx;
 
 
     public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMachine, Scene scene2, ComboBox combo){
+        this.comboBoxx = combo;
         this.cashMachine = cashMachine;
         List<Node> elements = new ArrayList<>();
         Text loginHeader = new Text("DRAGON BANK UNITED");
@@ -154,12 +154,21 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
     Label accountIdLabel = new Label("Account ID : ");
 
     //TextField accountIdTextField = new TextField();
+
     ComboBox accountIdTextField = new ComboBox();
     accountIdTextField.getItems().addAll("1000");
     accountIdTextField.getItems().addAll("2000");
     accountIdTextField.getItems().addAll("3000");
     accountIdTextField.getItems().addAll("4000");
     accountIdTextField.getItems().addAll("5000");
+
+    if(this.comboBoxx != null){
+    if(this.comboBoxx.getItems().size() > 5){
+        for (int i = 5; i < this.comboBoxx.getItems().size(); i++) {
+            accountIdTextField.getItems().add(this.comboBoxx.getItems().get(i));
+        }
+    }
+    }
 
     Button btnLogin = new Button("ENTER");
     Button btnCreateAccount = new Button("Create Account");
