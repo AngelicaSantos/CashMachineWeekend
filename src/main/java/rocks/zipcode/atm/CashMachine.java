@@ -29,6 +29,23 @@ public class CashMachine {
         );
     }
 
+    public void insertBasic(String name, String email, String amount) {
+//        tryCall(
+//                () -> bank.insertBasic(name, email, amount),
+//                update
+//        );
+    }
+    public Bank getBank(){
+        return bank;
+    }
+
+    public void insertPremium(int id) {
+        tryCall(
+                () -> bank.getAccountById(id),
+                update
+        );
+    }
+
     public Float getBalance(){
         return accountData.getBalance();
     }
@@ -56,6 +73,8 @@ public class CashMachine {
             accountData = null;
         }
     }
+
+
 
     @Override
     public String toString() {
