@@ -89,9 +89,9 @@ public class CashMachineApp extends Application {
         //Button Deposit
         Button btDeposit = new Button("Deposit");
         btDeposit.setOnAction(e -> {
-            int amount = Integer.parseInt(transaction.getText());
-            cashMachine.deposit(Float.valueOf(amount));
-            balance.setText(String.valueOf(cashMachine.getBalance()));
+            Float amount = Float.valueOf(transaction.getText());
+            cashMachine.deposit(amount);
+            balance.setText(String.format("%.2f", cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
 
             //overDraw add overdraw method
@@ -105,9 +105,9 @@ public class CashMachineApp extends Application {
         //Button Withdraw
         Button btWithdraw = new Button("Withdraw");
         btWithdraw.setOnAction(e -> {
-            Float amount = Float.valueOf(Integer.parseInt(transaction.getText()));
+            Float amount = Float.valueOf(transaction.getText());
             cashMachine.withdraw(amount);
-            balance.setText(String.valueOf(cashMachine.getBalance()));
+            balance.setText(String.format("%.2f", cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
 
             //overdraw text

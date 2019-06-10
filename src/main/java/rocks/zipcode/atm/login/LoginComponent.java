@@ -1,6 +1,7 @@
 package rocks.zipcode.atm.login;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import rocks.*;
@@ -21,6 +22,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import rocks.zipcode.atm.CashMachine;
+import rocks.zipcode.atm.CreateAccountComponent;
 import rocks.zipcode.atm.bank.Bank;
 import rocks.zipcode.atm.CashMachineApp;
 import rocks.zipcode.atm.bank.AccountData;
@@ -46,7 +48,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
     loginHeader.setFill(Color.DARKRED);
     Image logo = null;
     try {
-        logo = new Image(new FileInputStream("/Users/angelicasantos/Desktop/ZipCodeAS/CashMachineWeekend/src/images/dragonLogo.jpg"));
+        logo = new Image(new FileInputStream("/Users/erichtepale/Documents/IntelliJ_Projects/CashMachineWeekend/src/images/dragonLogo.jpg"));
     } catch (FileNotFoundException e) {
         e.printStackTrace();
     }
@@ -113,7 +115,7 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
         email.setText(cashMachine.getAccountData().getEmail());
 
         TextField balance = (TextField) scene1.lookup("#balance");
-        balance.setText("" + cashMachine.getAccountData().getBalance());
+        balance.setText("" + String.format("%.2f",cashMachine.getAccountData().getBalance()));
 
 
         stage.setScene(scene1);
@@ -122,7 +124,24 @@ public List<Node> getLoginElements(Stage stage, Scene scene1, CashMachine cashMa
 
     });
 
+    btnCreateAccount.setOnAction(e -> {
+
+        Scene createAccountScene = new Scene(createAccount(stage, scene1));
+        stage.setScene(createAccountScene);
+        stage.show();
+    });
+
     return elements;
 
+    }
+
+    private Parent createAccount(Stage stage, Scene scene) {
+        VBox vbox = new VBox(10);
+        vbox.setPrefSize(600, 600);
+        CreateAccountComponent createAccountComponent = new CreateAccountComponent();
+        List<Node> list = createAccountComponent.getCreateAccountElements(stage, scene, cashMachine);
+        Node[] nodes = list.toArray(new Node[]{});
+        vbox.getChildren().addAll(nodes);
+        return vbox;
     }
 }
