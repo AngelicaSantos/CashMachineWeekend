@@ -34,7 +34,7 @@ public class LoggedInComponent {
 
         Button btnDeposit = new Button("Deposit");
         btnDeposit.setOnAction(e -> {
-            int amount = Integer.parseInt(field.getText());
+            Float amount = Float.valueOf(field.getText());
             cashMachine.deposit(amount);
 
             areaInfo.setText(cashMachine.toString());
@@ -42,7 +42,7 @@ public class LoggedInComponent {
 
         Button btnWithdraw = new Button("Withdraw");
         btnWithdraw.setOnAction(e -> {
-            int amount = Integer.parseInt(field.getText());
+            Float amount =  Float.valueOf(field.getText());
             cashMachine.withdraw(amount);
 
             areaInfo.setText(cashMachine.toString());

@@ -29,11 +29,28 @@ public class CashMachine {
         );
     }
 
-    public Integer getBalance(){
+    public void insertBasic(String name, String email, String amount) {
+//        tryCall(
+//                () -> bank.insertBasic(name, email, amount),
+//                update
+//        );
+    }
+    public Bank getBank(){
+        return bank;
+    }
+
+    public void insertPremium(int id) {
+        tryCall(
+                () -> bank.getAccountById(id),
+                update
+        );
+    }
+
+    public Float getBalance(){
         return accountData.getBalance();
     }
 
-    public void deposit(int amount) {
+    public void deposit(Float amount) {
         if (accountData != null) {
             tryCall(
                     () -> bank.deposit(accountData, amount),
@@ -42,7 +59,7 @@ public class CashMachine {
         }
     }
 
-    public void withdraw(int amount) {
+    public void withdraw(Float amount) {
         if (accountData != null) {
             tryCall(
                     () -> bank.withdraw(accountData, amount),
@@ -57,11 +74,14 @@ public class CashMachine {
         }
     }
 
+
+
     @Override
     public String toString() {
         return accountData != null ? accountData.toString() : "Try account 1000 or 2000 and click submit.";
     }
 
+    // ohhkkkeyy donna !
     public AccountData getAccountData(){
         return this.accountData;
     }

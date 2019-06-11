@@ -44,7 +44,7 @@ public class CashMachineApp extends Application {
         vbox.setPrefSize(600, 600);
         //vbox.getChildren().addAll(field, flowpane, areaInfo);
         LoginComponent loginComponent = new LoginComponent();
-        List<Node> list = loginComponent.getLoginElements(stage, scene1, cashMachine);
+        List<Node> list = loginComponent.getLoginElements(stage, scene1, cashMachine, scene2);
         Node[] nodes = list.toArray(new Node[]{});
         vbox.getChildren().addAll(nodes);
         return vbox;
@@ -57,12 +57,12 @@ public class CashMachineApp extends Application {
         Text overDraftText = new Text ("Your balance is Overdraft");
         overDraftText.setVisible(false);
         overDraftText.setId("overDraftText");
+        overDraftText.setFill(Color.RED);
 
      //Account field
         Label labelId = new Label("Account ID");
         TextField id = new TextField("getId");
         id.setId("accountId");
-
 
      //Name field
         Label labelName = new Label("Name");
@@ -86,23 +86,32 @@ public class CashMachineApp extends Application {
         //Button Deposit
         Button btDeposit = new Button("Deposit");
         btDeposit.setOnAction(e -> {
-            int amount = Integer.parseInt(transaction.getText());
+            Float amount = Float.valueOf(transaction.getText());
             cashMachine.deposit(amount);
-            balance.setText(String.valueOf(cashMachine.getBalance()));
+            balance.setText(String.format("%.2f", cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
             transaction.clear();
+
+            //overDraw add overdraw method
+            if(cashMachine.getAccountData().getBalance() > 0){
+                overDraftText.setVisible(false);
+            }
 
         });
 
         //Button Withdraw
         Button btWithdraw = new Button("Withdraw");
         btWithdraw.setOnAction(e -> {
-            int amount = Integer.parseInt(transaction.getText());
+            Float amount = Float.valueOf(transaction.getText());
             cashMachine.withdraw(amount);
-            balance.setText(String.valueOf(cashMachine.getBalance()));
+            balance.setText(String.format("%.2f", cashMachine.getBalance()));
             System.out.println(cashMachine.toString());
             transaction.clear();
 
+            //overdraw text
+            if(cashMachine.getAccountData().getBalance() < 0){
+                overDraftText.setVisible(true);
+            }
         });
 
 
@@ -128,7 +137,8 @@ public class CashMachineApp extends Application {
 
      //Layout accountPage
         GridPane accountPage = new GridPane();
-        accountPage.setBackground(new Background(new BackgroundFill(Color.LIGHTSEAGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        accountPage.setBackground(new Background(new BackgroundFill(Color.rgb(219, 120, 6), CornerRadii.EMPTY, Insets.EMPTY)));
         accountPage.setPadding(new Insets(10, 10, 10, 10));
         accountPage.getChildren().addAll(btLogin, labelId, id, name, labelName, labelEmail, email,
                 labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw, overDraftText);
@@ -141,6 +151,10 @@ public class CashMachineApp extends Application {
         //logout button action
         btLogin.setOnAction(e -> stage.setScene(scene1));
         stage.setTitle("Dragon Bank United");
+
+        //premium membs
+
+
         stage.setResizable(false);
         stage.setScene(scene1);
         stage.show();
