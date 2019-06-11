@@ -1,33 +1,28 @@
 package rocks.zipcode.atm;
 
 import javafx.geometry.Insets;
-import javafx.scene.control.*;
+import javafx.scene.*;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 //package rocks.zipcode.atm;
 
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import rocks.zipcode.atm.bank.Bank;
-import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.scene.layout.FlowPane;
 import rocks.zipcode.atm.login.LoginComponent;
-import rocks.zipcode.atm.login.LoggedInComponent;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @author ZipCodeWilmington
@@ -97,6 +92,7 @@ public class CashMachineApp extends Application {
                 overDraftText.setVisible(false);
             }
 
+
         });
 
         //Button Withdraw
@@ -112,6 +108,8 @@ public class CashMachineApp extends Application {
             if(cashMachine.getAccountData().getBalance() < 0){
                 overDraftText.setVisible(true);
             }
+
+
         });
 
 
@@ -135,21 +133,42 @@ public class CashMachineApp extends Application {
         GridPane.setConstraints(btLogin, 3, 8);
         GridPane.setConstraints(overDraftText, 3, 0);
 
+
+
      //Layout accountPage
+        AtomicReference<Image> logo1 = null;
+        try {
+            if (logo1 != null) {
+                logo1.set(new Image(new FileInputStream("/Users/angelicasantos/Desktop/ZipCodeAS/CashMachineWeekend/src/images/dragonLogo.jpg")));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+
+
+
+        }
+
         GridPane accountPage = new GridPane();
 
-        accountPage.setBackground(new Background(new BackgroundFill(Color.rgb(219, 120, 6), CornerRadii.EMPTY, Insets.EMPTY)));
+        accountPage.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
         accountPage.setPadding(new Insets(10, 10, 10, 10));
         accountPage.getChildren().addAll(btLogin, labelId, id, name, labelName, labelEmail, email,
                 labelTransaction, transaction, labelBalance, balance, btDeposit, btWithdraw, overDraftText);
         accountPage.setVgap(10);
         accountPage.setHgap(10);
 
+
+
+
+
         scene2 = new Scene(accountPage, 580, 350);
         scene1 =  new Scene(createLogin(stage, scene2));
 
         //logout button action
-        btLogin.setOnAction(e -> stage.setScene(scene1));
+        btLogin.setOnAction(e -> {
+            overDraftText.setVisible(false);
+            stage.setScene(scene1);
+        });
         stage.setTitle("Dragon Bank United");
 
         //premium membs

@@ -27,10 +27,14 @@ public class LoggedInComponent {
     private TextField field = new TextField();
     private CashMachine cashMachine = new CashMachine(new Bank());
 
+
+
     public List<Node> getLoginElements() {
         List<Node> elements = new ArrayList<>();
 
         TextArea areaInfo = new TextArea();
+
+
 
         Button btnDeposit = new Button("Deposit");
         btnDeposit.setOnAction(e -> {
@@ -57,6 +61,8 @@ public class LoggedInComponent {
 
         FlowPane flowpane = new FlowPane();
 
+
+
         flowpane.getChildren().add(btnDeposit);
         flowpane.getChildren().add(btnWithdraw);
         flowpane.getChildren().add(btnExit);
@@ -65,6 +71,8 @@ public class LoggedInComponent {
         elements.add(flowpane);
         elements.add(areaInfo);
         return elements;
+
+
     }
 
 }
